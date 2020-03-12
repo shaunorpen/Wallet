@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
-import data from './data'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import data from './data';
 import './App.css';
 
 function App() {
   let [user, setUser] = useState('Brian');
   let [blockchain, setBlockchain] = useState(data);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/chain')
+      .then(res => {
+        setBlockchain(res.data.length > 1 ? res.data : data);
+      })
+      .catch(err => {
+        alert(err.message);
+      })
+  }, [])
 
   function extractTransactions(blockchain) {
     const transactions = [];
