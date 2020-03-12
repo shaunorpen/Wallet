@@ -71,7 +71,7 @@ function Transactions({ transactions, user }) {
         <div style={{ display:"flex", justifyContent:"space-around" }}>
           <div>{transaction.sender === '0' ? 'Block reward' : transaction.sender }</div>
           <div>{transaction.recipient}</div>
-          <div>LC{transaction.amount}</div>
+          <div>LC{parseFloat(transaction.amount)}</div>
         </div>
       )
   )
