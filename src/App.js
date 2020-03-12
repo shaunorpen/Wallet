@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import blockchain from './data'
+import data from './data'
 import './App.css';
 
 function App() {
   let [user, setUser] = useState('Brian');
+  let [blockchain, setBlockchain] = useState(data);
 
   function extractTransactions(blockchain) {
     const transactions = [];
 
     Object.keys(blockchain.chain).map(key => {
-      blockchain.chain[key].transactions.map(transaction => {
-          transactions.push(transaction)
+      return blockchain.chain[key].transactions.map(transaction => {
+          return transactions.push(transaction)
       })
     });
 
